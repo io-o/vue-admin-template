@@ -1,0 +1,29 @@
+{
+  "input": [
+    {
+      "type": "input",
+      "name": "输入框",
+      "placeholder": "请输入姓名",
+      "showLabel": false,
+      "label": {
+        "labelTitle": "姓名",
+        "labelPosition": "left",
+        "labelwidth": 50,
+        "labelWidth": "50px"
+      },
+      "value": "qqqq",
+      "apiKey": "name",
+      "fieldTypes": "inputTypes",
+      "style": {
+        "margin": "0px 0px 0px 0px"
+      },
+      "rules": [
+        {
+          "required": true,
+          "message": "请输入邮箱地址",
+          "trigger": "blur"
+        }
+      ]
+    }
+  ]
+}
