@@ -54,14 +54,16 @@ module.exports = {
         .tap(args => { })
 
       // #region 忽略生成环境打包的文件 使用CDN引入依赖，减少打包体积
+      // 注意后面的名称对应的事npm包名称
+
 
       var externals = {
         vue: 'Vue',
-        axios: 'axios',
-        'element-ui': 'ELEMENT',
+        axios: 'axios', 
+        'element-ui': 'ELEMENT', 
         'vue-router': 'VueRouter',
         vuex: 'Vuex',
-        nprogress: 'nprogress'
+        nprogress: 'Nprogress'
       }
       config.externals(externals)
       const cdn = {
