@@ -37,6 +37,7 @@ const mutations = {
 const actions = {
   generateRoutes({ commit }, roles) {
     return new Promise(resolve => {
+      // 模拟路由数据
       const data = [
         {
           'path': '/form',

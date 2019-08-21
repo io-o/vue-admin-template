@@ -12,18 +12,16 @@ const mutations = {
     state.sidebar.opened = !state.sidebar.opened
     state.sidebar.withoutAnimation = false
     if (state.sidebar.opened) {
-      // Cookies.set('sidebarStatus', 1)
       sessionStorage.setItem('sidebarStatus', 1)
     } else {
       sessionStorage.setItem('sidebarStatus', 0)
-      // Cookies.set('sidebarStatus', 0)
     }
   },
   CLOSE_SIDEBAR: (state, withoutAnimation) => {
-    // Cookies.set('sidebarStatus', 0)
     sessionStorage.setItem('sidebarStatus', 0)
     state.sidebar.opened = false
     state.sidebar.withoutAnimation = withoutAnimation
+    state.device = 'desktop'
   },
   TOGGLE_DEVICE: (state, device) => {
     state.device = device

@@ -1,27 +1,30 @@
 <template>
   <div class="app-container">
-    <h1>Hello, Vue</h1>
+    <dynamic-form
+      :form-config="formConfig"
+      :value="value"
+    />
+    <el-button @click="handleClick">dd</el-button>
   </div>
 </template>
 
 <script type="text/javascript">
-
-
+import baseJson from '@/assets/json/base.json'
 export default {
 
   data() {
     return {
-      item: allWidget.input,
-      basicComponents: allWidget.input
+      value: {},
+      formConfig: {
+        formItemList: baseJson.input
+      }
     }
   },
 
-  created() {
-
-  },
-
   methods: {
-
+    handleClick() {
+      console.log(this.value)
+    }
   }
 }
 </script>
