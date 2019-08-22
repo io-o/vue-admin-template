@@ -27,31 +27,31 @@ module.exports = {
 
     if (process.env.NODE_ENV === 'production') {
       // #region 图片压缩
-      config.module
-        .rule('images')
-        .test(/\.(png|jpe?g|gif|svg)(\?.*)?$/)
-        .use('img-loader')
-        .loader('img-loader').options({
-          plugins: [
-            require('imagemin-jpegtran')(),
-            require('imagemin-pngquant')({
-              quality: [0.75, 0.85]
-            })
-          ]
-        })
+      // config.module
+      //   .rule('images')
+      //   .test(/\.(png|jpe?g|gif|svg)(\?.*)?$/)
+      //   .use('img-loader')
+      //   .loader('img-loader').options({
+      //     plugins: [
+      //       require('imagemin-jpegtran')(),
+      //       require('imagemin-pngquant')({
+      //         quality: [0.75, 0.85]
+      //       })
+      //     ]
+      //   })
 
       // #region 启用GZip压缩 需要后端支持
-      config
-        .plugin('compression')
-        .use(CompressionPlugin, {
-          asset: '[path].gz[query]',
-          algorithm: 'gzip',
-          test: new RegExp('\\.(' + ['js', 'css'].join('|') + ')$'),
-          threshold: 10240,
-          minRatio: 0.8,
-          cache: true
-        })
-        .tap(args => { })
+      // config
+      //   .plugin('compression')
+      //   .use(CompressionPlugin, {
+      //     asset: '[path].gz[query]',
+      //     algorithm: 'gzip',
+      //     test: new RegExp('\\.(' + ['js', 'css'].join('|') + ')$'),
+      //     threshold: 10240,
+      //     minRatio: 0.8,
+      //     cache: true
+      //   })
+      //   .tap(args => { })
 
       // #region 忽略生成环境打包的文件 使用CDN引入依赖，减少打包体积
       // 注意后面的名称对应的事npm包名称
@@ -63,7 +63,7 @@ module.exports = {
         'element-ui': 'ELEMENT', 
         'vue-router': 'VueRouter',
         vuex: 'Vuex',
-        nprogress: 'Nprogress'
+        nprogress: 'NProgress'
       }
       config.externals(externals)
       const cdn = {
@@ -97,13 +97,13 @@ module.exports = {
 
       // #region 分析打包体积
 
-      if (process.env.IS_ANALYZE) {
-        config.plugin('webpack-report').use(BundleAnalyzerPlugin, [
-          {
-            analyzerMode: 'static'
-          }
-        ])
-      }
+      // if (process.env.IS_ANALYZE) {
+      //   config.plugin('webpack-report').use(BundleAnalyzerPlugin, [
+      //     {
+      //       analyzerMode: 'static'
+      //     }
+      //   ])
+      // }
     }
   }
 }
