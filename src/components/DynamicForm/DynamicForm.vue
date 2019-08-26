@@ -4,15 +4,22 @@
     :model="value"
     v-bind="formConfig"
   >
-    <dynamic-form-item
-      v-for="item in formConfig.formItemList"
-      v-if="value[item.key]!== undefined"
-      :key="item.key"
-      :item="item"
-      v-bind="item"
-      :value="value[item.key]"
-      @input="handelInput($event, item.key)"
-    />
+    <div
+      v-for="group in formConfig.groupConfig"
+      :key="group.id"
+    >
+      <dynamic-form-item
+        v-for="item in formConfig.formItemList"
+        v-if="!group.isMore && value[item.key]!== undefined"
+        :key="item.key"
+        :item="item"
+        v-bind="item"
+        :value="value[item.key]"
+        @input="handelInput($event, item.key)"
+      />
+      <dynamic-form-table />
+
+    </div>
     <slot />
   </el-form>
 </template>

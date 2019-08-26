@@ -10,7 +10,8 @@ import Layout from '@/layout'
   前端异步路由表
 */
 export const map = {
-  form: () => import('@/views/form/index')
+  form: () => import('@/views/form/index'),
+  test: () => import('@/views/form/test')
 }
 
 /* 不需要权限路由 */

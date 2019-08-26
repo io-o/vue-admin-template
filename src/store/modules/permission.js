@@ -57,11 +57,11 @@ const actions = {
               }
             },
             {
-              path: 'a',
-              name: 'a',
-              component: 'form',
+              path: 'test',
+              name: 'test',
+              component: 'test',
               meta: {
-                title: 'a',
+                title: 'test',
                 icon: 'form'
               }
             }

@@ -1,5 +1,5 @@
-const CompressionPlugin = require('compression-webpack-plugin')
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+// const CompressionPlugin = require('compression-webpack-plugin')
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const path = require('path')
 
 module.exports = {
@@ -56,11 +56,10 @@ module.exports = {
       // #region 忽略生成环境打包的文件 使用CDN引入依赖，减少打包体积
       // 注意后面的名称对应的事npm包名称
 
-
       var externals = {
         vue: 'Vue',
-        axios: 'axios', 
-        'element-ui': 'ELEMENT', 
+        axios: 'axios',
+        'element-ui': 'ELEMENT',
         'vue-router': 'VueRouter',
         vuex: 'Vuex',
         nprogress: 'NProgress'
@@ -69,24 +68,22 @@ module.exports = {
       const cdn = {
         css: [
           // element-ui css
-          'https://cdn.bootcss.com/element-ui/2.7.2/theme-chalk/index.css',
+          'https://cdn.bootcss.com/element-ui/2.11.0/theme-chalk/index.css',
           'https://cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css'
         ],
         js: [
           // vue
           'https://cdn.bootcss.com/vue/2.6.10/vue.min.js',
           // vue-router
-          'https://cdn.bootcss.com/vue-router/3.0.4/vue-router.min.js',
+          'https://cdn.bootcss.com/vue-router/3.0.6/vue-router.min.js',
           // vuex
           'https://cdn.bootcss.com/vuex/3.1.0/vuex.min.js',
           // axios
-          'https://cdn.bootcss.com/axios/0.19.0-beta.1/axios.min.js',
+          'https://cdn.bootcss.com/axios/0.18.1/axios.min.js',
           // element-ui js
-          'https://cdn.bootcss.com/element-ui/2.7.2/index.js',
+          'https://cdn.bootcss.com/element-ui/2.11.0/index.js',
           // nprogress
           'https://cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js'
-          // js-cookie
-          // 'https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js'
         ]
       }
       config.plugin('html')
