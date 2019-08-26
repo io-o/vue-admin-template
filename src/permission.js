@@ -27,8 +27,6 @@ router.beforeEach(async(to, from, next) => {
         next()
       } else {
         try {
-          // const { roles } = await store.dispatch('user/getInfo')
-
           // 获取路由
           const accessRoutes = await store.dispatch('permission/generateRoutes')
           router.addRoutes(accessRoutes)

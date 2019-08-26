@@ -1,15 +1,14 @@
 <template>
   <div class="app-container">
-    <div
+    <!-- <div
       v-for="group in data.groupConfig"
       :key="group.id"
-    >
+    > -->
       <dynamic-form
-        v-if="!group.isMore"
-        :form-config="group"
+        :form-config="data"
         :value="value"
       />
-      <el-table
+      <!-- <el-table
         v-else
         :data="tableData"
         style="width: 100%"
@@ -32,8 +31,8 @@
             </el-select>
           </template>
         </el-table-column>
-      </el-table>
-    </div>
+      </el-table> -->
+    <!-- </div> -->
   </div>
 </template>
 
@@ -45,6 +44,32 @@ export default {
         formId: '0',
         formName: 'form1',
         groupConfig: [
+                    {
+            id: 3,
+            isMore: true,
+            formItemList: [
+              {
+                type: 'select',
+                label: '检测sa项目',
+                key: 'xx',
+                defaultValue: [
+                  {
+                    label: '血s生化',
+                    value: 1
+                  },
+                  {
+                    label: '学生',
+                    value: 2
+                  }
+                ]
+              },
+              {
+                type: 'input',
+                label: '结果',
+                key: 'res'
+              }
+            ]
+          },
           {
             id: 1,
             isMore: false,
@@ -110,12 +135,11 @@ export default {
                 key: 'res'
               }
             ]
-          }
+          },
+
         ]
       },
-      value: {
-        xx: 1
-      },
+      value: {},
       tableData: [
         {}
       ]

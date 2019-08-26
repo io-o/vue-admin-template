@@ -8,17 +8,23 @@
       v-for="group in formConfig.groupConfig"
       :key="group.id"
     >
+    <!-- 渲染table -->
+      <dynamic-form-table
+        v-if="group.isMore"
+        :item="group"
+        v-bind="group"
+        :value="value" />
+
+      <!-- 渲染表单 -->
       <dynamic-form-item
-        v-for="item in formConfig.formItemList"
-        v-if="!group.isMore && value[item.key]!== undefined"
+        v-if="!group.isMore"
+        v-for="item in group.formItemList"
         :key="item.key"
         :item="item"
         v-bind="item"
         :value="value[item.key]"
         @input="handelInput($event, item.key)"
       />
-      <dynamic-form-table />
-
     </div>
     <slot />
   </el-form>
@@ -38,22 +44,26 @@ export default {
     }
   },
 
-  mounted() {
+  created() {
     this.setDefaultValue()
   },
 
   methods: {
     setDefaultValue() {
       // 设置初始值
-      // const formData = { ...this.value }
-      this.formConfig.formItemList.forEach(item => {
-        const { key, value } = item
-        if (this.value[key] === undefined || this.value[key] === null) {
-          // formData[key] = value
-          this.$set(this.value, key, value)
-        }
-      })
-      // this.$emit('input', this.value)
+      let groupLength = this.formConfig.groupConfig.length
+      let that = this
+      for (let i = 0; i < groupLength; i++) {
+        that.formConfig.groupConfig[i].formItemList.forEach(item => {
+          const { key, value } = item
+          if (that.value[key] === undefined || that.value[key] === null) {
+            that.$set(that.value, key, value)
+          }
+          if (item.defaultValue) {
+            that.$set(that.value, key, item.defaultValue)
+          }
+        })
+      }
     },
     handelInput(val, key) {
       this.$set(this.value, key, val)

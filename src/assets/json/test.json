@@ -1,0 +1,27 @@
+{
+  "formId": "f1",
+  "formConfig": [
+    {
+      "isMore": true,
+      "groupConfig": [
+        {
+          "type": "input",
+          "label": "姓名",
+          "disable": false,
+          "readonly": false,
+          "value": "",
+          "placeholder": "请输入姓名",
+          "rules": [
+            {
+              "required": true,
+              "trigger": "blur",
+              "message": "请输入"
+            }
+          ],
+          "key": "name",
+          "subtype": "text"
+        }
+      ]
+    }
+  ]
+}
