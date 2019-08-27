@@ -1,25 +1,29 @@
 <template>
   <el-table
-    v-if="value[item.key] !== undefined"
-    :data="value[item.key]"
+    :data="item.data"
     border
   >
     <el-table-column
-      v-for="column in item.formItemList"
+      v-for="(column, index) in item.columnData"
       :key="column.key"
       :prop="column.key"
       :label="column.label"
     >
       <template slot-scope="scope">
-        <el-input v-if="column.type === 'input'" />
-        <el-select  v-else placeholder="请选择">
+        <span v-if="index === 0">
+          {{scope.row[column.value]}}
+        </span>
+        <el-input 
+          v-else-if="column.type === 'input'"
+          v-model="scope.row[column.value]" />
+        <!-- <el-select  v-else placeholder="请选择">
           <el-option
             v-for="option in column.defaultValue"
             :key="option.value"
             :label="option.label"
             :value="option.value"
           />
-        </el-select>
+        </el-select> -->
       </template>
     </el-table-column>
   </el-table>
@@ -32,24 +36,11 @@ export default {
       type: Object,
       required: true
     },
-    value: {
-      type: Object,
-      required: true
-    }
   },
   data() {
     return {
       tableData: []
     }
   },
-  watch: {
-    value: {
-      handler(newV, oldV) {
-        console.log(this.item);
-        
-      },
-      immediate: true
-    }
-  }
 }
 </script>

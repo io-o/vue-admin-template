@@ -51,18 +51,19 @@ export default {
   methods: {
     setDefaultValue() {
       // 设置初始值
-      let groupLength = this.formConfig.groupConfig.length
-      let that = this
+      let config = this.formConfig.groupConfig,
+        groupLength = this.formConfig.groupConfig.length,
+        that = this
       for (let i = 0; i < groupLength; i++) {
-        that.formConfig.groupConfig[i].formItemList.forEach(item => {
+        if (!config[i].isMore) {
+          config[i].formItemList.forEach(item => {
           const { key, value } = item
           if (that.value[key] === undefined || that.value[key] === null) {
             that.$set(that.value, key, value)
           }
-          if (item.defaultValue) {
-            that.$set(that.value, key, item.defaultValue)
-          }
-        })
+          })
+        }
+        
       }
     },
     handelInput(val, key) {

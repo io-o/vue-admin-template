@@ -3,12 +3,9 @@
     <!-- <div
       v-for="group in data.groupConfig"
       :key="group.id"
-    > -->
-      <dynamic-form
-        :form-config="data"
-        :value="value"
-      />
-      <!-- <el-table
+    >-->
+    <dynamic-form :form-config="data" :value="value" />
+    <!-- <el-table
         v-else
         :data="tableData"
         style="width: 100%"
@@ -31,7 +28,7 @@
             </el-select>
           </template>
         </el-table-column>
-      </el-table> -->
+    </el-table>-->
     <!-- </div> -->
   </div>
 </template>
@@ -41,32 +38,32 @@ export default {
   data() {
     return {
       data: {
-        formId: '0',
-        formName: 'form1',
+        formId: "0",
+        formName: "form1",
         groupConfig: [
-                    {
+          {
             id: 3,
             isMore: true,
-            formItemList: [
+            groupId: 'gri',
+            data: [
               {
-                type: 'select',
-                label: '检测sa项目',
-                key: 'xx',
-                defaultValue: [
-                  {
-                    label: '血s生化',
-                    value: 1
-                  },
-                  {
-                    label: '学生',
-                    value: 2
-                  }
-                ]
+                name: "111",
+                res: "AAA"
               },
               {
-                type: 'input',
+                name: "222",
+                res: "BBB"
+              }
+            ],
+            columnData: [
+              {
+                label: '类型',
+                value: 'name'
+              },
+              {
                 label: '结果',
-                key: 'res'
+                value: 'res',
+                type: 'input'
               }
             ]
           },
@@ -75,80 +72,49 @@ export default {
             isMore: false,
             formItemList: [
               {
-                'type': 'input',
-                'label': '姓名',
-                'disable': false,
-                'readonly': false,
-                'value': '',
-                'placeholder': '请输入姓名',
-                'rules': [
+                type: "input",
+                label: "姓名",
+                disable: false,
+                readonly: false,
+                value: "",
+                placeholder: "请输入姓名",
+                rules: [
                   {
-                    'required': true,
-                    'trigger': 'blur',
-                    'message': '请输入'
+                    required: true,
+                    trigger: "blur",
+                    message: "请输入"
                   }
                 ],
-                'key': 'name',
-                'subtype': 'text'
+                key: "name",
+                subtype: "text"
               },
               {
-                'type': 'input',
-                'label': '年龄',
-                'disable': false,
-                'readonly': false,
-                'value': '',
-                'placeholder': '请输入姓名',
-                'rules': [
+                type: "input",
+                label: "年龄",
+                disable: false,
+                readonly: false,
+                value: "",
+                placeholder: "请输入姓名",
+                rules: [
                   {
-                    'required': true,
-                    'trigger': 'blur',
-                    'message': '请输入'
+                    required: true,
+                    trigger: "blur",
+                    message: "请输入"
                   }
                 ],
-                'key': 'age',
-                'subtype': 'text'
+                key: "age",
+                subtype: "text"
               }
             ]
           },
-          {
-            id: 2,
-            isMore: true,
-            formItemList: [
-              {
-                type: 'select',
-                label: '检测项目',
-                key: 'xx',
-                defaultValue: [
-                  {
-                    label: '血生化',
-                    value: 1
-                  },
-                  {
-                    label: '学生',
-                    value: 2
-                  }
-                ]
-              },
-              {
-                type: 'input',
-                label: '结果',
-                key: 'res'
-              }
-            ]
-          },
-
         ]
       },
       value: {},
-      tableData: [
-        {}
-      ]
-    }
+      tableData: [{}]
+    };
   },
 
-  methods: {
-
-  }
-}
+  methods: {}
+};
 </script>
 
